@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ATB_Test_ex.Models.DB_Context;
 using ATB_Test_ex.Models;
+using ATB_Test_ex.Models.HelperClasses.Enums;
 
 namespace ATB_Test_ex.Controllers
 {
@@ -12,11 +13,12 @@ namespace ATB_Test_ex.Controllers
     {
         EmployeeContext db = new EmployeeContext();
 
-        public ActionResult Index()
+        public  ActionResult Index()
         {
             IEnumerable<EmployeeWrap> employes = from e in db.Employes
                                                  join d in db.Departments on e.DepartmentId equals d.DepartmentId
-                                                 select new EmployeeWrap {
+                                                 select new EmployeeWrap
+                                                 {
                                                      EmployeeId = e.EmployeeId,
                                                      FullName = e.FullName,
                                                      Department = d.DepartmentName,
@@ -25,8 +27,11 @@ namespace ATB_Test_ex.Controllers
                                                      Phone = e.Phone,
                                                      BirsdayDate = e.BirsdayDate,
                                                      Sex = e.Sex                                           
-                                            };
+                                                 };
             ViewBag.Employes = employes;
+
+
+            //ViewBag.CityList =  DropDownContent.GetCityStringAsync();
             return View();
         }
 

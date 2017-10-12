@@ -27,3 +27,190 @@ textarea {
 p {
     text-indent: 20px;
 }
+
+.wrapper {
+    /*width: 1200px;*/
+    margin: 0 auto;
+    padding-bottom: 13px;
+    background-color: #ecf1f5;
+    -moz-border-radius: 10px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
+    -khtml-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* Middle
+-----------------------------------------------------------------------------*/
+.middle {
+    margin-left: 410px !important;
+    background: #fff url(../Content/images/content-border.png) top left repeat-y;
+    position: relative;
+    margin: 0 15px 0 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+    .middle:after {
+        display: table;
+        clear: both;
+        content: '';
+    }
+
+    .middle.not-sidebar {
+        border: none !important;
+        background: none !important;
+        background-image: none !important;
+        position: relative;
+        margin: 0 15px 0 20px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+.container-new {
+    width: 100%;
+    float: left;
+    min-height: 610px;
+    overflow: hidden;
+    margin-right: -100%;
+}
+
+.left-sidebar {
+    background: #fff;
+    margin-left: 15px;
+    float: left;
+    width: 410px;
+    position: relative;
+    /* background: #ecf1f5; */
+    /*left: -410px;*/
+    height: 610px;
+    overflow: hidden;
+}
+
+    .left-sidebar .top {
+        padding: 10px 10px 10px 20px;
+        position: relative;
+    }
+
+.dib {
+    display: inline-block;
+}
+
+.item-w100 {
+    display: inline-block;
+    width: 100%;
+    line-height: 18px;
+}
+
+fieldset.employ .item-fieldset {
+    margin: 0px 0px 2px;
+    width: 100%;
+    display: inline-block;
+}
+
+fieldset .item-fieldset {
+    margin-right: 10px;
+    clear: both;
+    margin: 10px 0;
+}
+
+.col95acbc {
+    color: #95acbc !important;
+}
+
+.f-left {
+    float: left;
+}
+
+.w110px {
+    width: 110px !important;
+}
+
+.w110px {
+    width: 110px !important;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+.t15 {
+    margin-top: 10px
+}
+
+fieldset.employ input[type="text"], fieldset.employ input[type="password"], fieldset.employ input[type="date"], fieldset.employ input[type="datetime-local"], fieldset.employ input[type="number"] {
+    float: right;
+    width: 250px;
+}
+
+input[type="text"], input[type="password"], input[type="date"], input[type="datetime-local"], input[type="number"] {
+    padding: 0 5px;
+    border: 2px solid #95acbc;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 40px;
+    color: #22405a;
+    width: 300px;
+    height: 40px;
+    box-sizing: border-box;
+}
+
+.col22405a {
+    color: #22405a !important;
+}
+
+.w260px {
+    width: 260px !important;
+}
+
+.f16 {
+    font-size: 16px;
+}
+
+input {
+    font-family: PTSansRegular;
+}
+
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+input {
+    line-height: normal;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+fieldset {
+    margin-right: 10px;
+}
+.head-title {
+    text-align: center;
+}
+.container-new {
+    width: 100%;
+    float: left;
+    min-height: 610px;
+    overflow: hidden;
+    margin-right: -100%;
+}
+
+.content {
+    padding: 10px 20px 10px 18px;
+}
+.m-b10 {
+    margin-bottom: 10px;
+}

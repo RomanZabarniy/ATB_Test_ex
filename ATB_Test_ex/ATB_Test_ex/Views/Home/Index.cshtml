@@ -1,25 +1,79 @@
 ﻿@{
     ViewData["Title"] = "Сотрудник";
 }
+<div class="wrapper">
+    <h3 class="head-title">Сотрудники</h3>
+    <aside class="left-sidebar" id="left-sidebar">
+        <div class="top">
+            <div class="data">
+                <fieldset class="employ">
+                    <div class="dib item-w100 m-b10">
+                        <button type="button" class="btn btn-success">Сохранить</button>
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">ФИО</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">Отдел</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">Пол</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">Дата рожд.</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">Город</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">Адрес</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                    <div class="item-fieldset">
+                        <span class="f-left t15 col95acbc f16 w110px" data-bind="text: language.dictionary().fName">Телефон</span>
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObUsr().Name">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </aside>
 
-<div>
-    <h3>Сотрудники</h3>
-    <table>
-        <tr>
-            <td><p>ФИО</p></td>
-            <td><p>Отдел</p></td>
-            <td><p>Город</p></td>
-            <td></td>
-        </tr>
-        @foreach (var e in ViewBag.Employes)
-            {
-            <tr>
-                <td><p>@e.FullName</p></td>
-                <td><p>@e.Department</p></td>
-                <td><p>@e.City</p></td>
-                @*<td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>*@
-            </tr>
-        }
-    </table>
+    <div class="middle">
+        <div class="container-new properties">
+            <main class="content" id="ZoneA">
+                <div class="buttons pr20 pl20 m-b10">
+                    <button type="button" class="btn btn-primary">Добавить</button>
+                    <button type="button" class="btn btn-danger">Удалить</button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th><p>ФИО</p></th>
+                                <th><p>Отдел</p></th>
+                                <th><p>Город</p></th>
+                                @*<td></td>*@
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var e in ViewBag.Employes)
+                            {
+                                <tr>
+                                    <td><p>@e.FullName</p></td>
+                                    <td><p>@e.Department</p></td>
+                                    <td><p>@e.City</p></td>
+                                    @*<td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
 </div>
-
