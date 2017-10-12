@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Сотрудник";
+}
+
+<div>
+    <h3>Сотрудники</h3>
+    <table>
+        <tr>
+            <td><p>ФИО</p></td>
+            <td><p>Отдел</p></td>
+            <td><p>Город</p></td>
+            <td></td>
+        </tr>
+        @foreach (var e in ViewBag.Employes)
+            {
+            <tr>
+                <td><p>@e.FullName</p></td>
+                <td><p>@e.Department</p></td>
+                <td><p>@e.City</p></td>
+                @*<td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>*@
+            </tr>
+        }
+    </table>
+</div>
+
