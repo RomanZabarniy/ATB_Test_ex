@@ -38,11 +38,26 @@
             <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
         </footer>
     </div>
-
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog" style="width:400px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" type="button" style="background:none; width:10px; padding:0 20px 40px 10px" data-dismiss="modal">x</button>
+                    <h4 class="modal-title" id="header"></h4>
+                </div>
+                <div class="modal-body" style="height:auto;padding-bottom:5px;padding-top:5px;">
+                    <p id="content"></p>
+                </div>
+                <div class="modal-footer" style="height:40px; padding:0;margin:0;">
+                    <button class="" id="onClickOk" type="button" style="background:none; width:60px; padding:10px" data-dismiss="modal">Ok</button>
+                    <button class="" id="buttonCancel" type="button" style="background:none; width:60px; padding:10px" data-dismiss="modal">Отмена</button>
+                </div>
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script src="~/Scripts/site.js"></script>
 </body>
 </html>
 

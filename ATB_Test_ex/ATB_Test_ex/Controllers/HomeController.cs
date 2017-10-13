@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using ATB_Test_ex.Models.DB_Context;
 using ATB_Test_ex.Models;
 using ATB_Test_ex.Models.HelperClasses.Enums;
+using ATB_Test_ex.Models.HelperClasses.Shared;
 
 namespace ATB_Test_ex.Controllers
 {
@@ -13,40 +14,32 @@ namespace ATB_Test_ex.Controllers
     {
         EmployeeContext db = new EmployeeContext();
 
-        public  ActionResult Index()
+        public  ActionResult Index()  { return View(); }
+
+        public ActionResult About()   { return View(); }
+
+        public ActionResult Contact() { return View(); }
+
+        [HttpPost]
+        public JsonResult GetEmployeeList()
         {
-            IEnumerable<EmployeeWrap> employes = from e in db.Employes
+            IEnumerable<EmployeeWrap> employes = (from e in db.Employes
                                                  join d in db.Departments on e.DepartmentId equals d.DepartmentId
                                                  select new EmployeeWrap
                                                  {
                                                      EmployeeId = e.EmployeeId,
                                                      FullName = e.FullName,
-                                                     Department = d.DepartmentName,
+                                                     DepartmentName = d.DepartmentName,
+                                                     DepartmentId = e.DepartmentId,
                                                      Adress = e.Adress,
                                                      City = e.City,
                                                      Phone = e.Phone,
                                                      BirsdayDate = e.BirsdayDate,
-                                                     Sex = e.Sex                                           
-                                                 };
-            ViewBag.Employes = employes;
-
-
-            //ViewBag.CityList =  DropDownContent.GetCityStringAsync();
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+                                                     //BDateString = e.BirsdayDate == null ? "" : DateConverterHelper.DateForWeb(e.BirsdayDate),
+                                                     BDateString = null,
+                                                     Sex = e.Sex
+                                                 }).ToList();
+            return Json(employes);
         }
     }
 }

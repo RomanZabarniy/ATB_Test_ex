@@ -1,42 +1,62 @@
-﻿@{
+﻿<script src="~/Scripts/Share.js"></script>
+<script src="~/Scripts/site.js"></script>
+@{
     ViewData["Title"] = "Сотрудник";
 }
+<div>
+    <div id="loadPict" class="col-md-offset-4">
+        <img style="position:page" src="~/Content/images/294.gif" />
+    </div>
+</div>
 <div class="wrapper">
     <h3 class="head-title">Сотрудники</h3>
     <aside class="left-sidebar" id="left-sidebar">
         <div class="top">
             <div class="data">
                 <fieldset class="employ">
+                    @Html.ValidationSummary()
                     <div class="dib item-w100 m-b10">
                         <button type="button" class="btn btn-success">Сохранить</button>
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">ФИО</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ObEmpl().FullName">
                     </div>
                     <div class="item-fieldset">
-                        <span class="f-left t15 col95acbc f16 w110px" >Отдел</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <span class="f-left t15 col95acbc f16 w110px">Отдел</span>
+                        <div>
+                            <select class="w260px round form-select f16 m-b5 " data-bind="value: ObEmpl().DepartmentName">
+                                <option value="1">Не выбран</option>
+                                <option value="2">Администрация</option>
+                                <option value="3">Бухгалтерия</option>
+                                <option value="4">Проектный отдел</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="item-fieldset">
-                        <span class="f-left t15 col95acbc f16 w110px" >Пол</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <span class="f-left t15 col95acbc f16 w110px">Пол</span>
+                        <div>
+                            <select class="w70px round form-select f16 m-b5 " data-bind="value: ObEmpl().Sex">
+                                <option value="m">муж</option>
+                                <option value="f">жен</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="item-fieldset">
-                        <span class="f-left t15 col95acbc f16 w110px" >Дата рожд.</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <span class="f-left t15 col95acbc f16 w110px">Дата рожд.</span>
+                        <input type="text" id="date-range13-1" class="f16 col22405a w260px" data-bind="value: ObEmpl().BDate">
                     </div>
                     <div class="item-fieldset">
-                        <span class="f-left t15 col95acbc f16 w110px" >Город</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <span class="f-left t15 col95acbc f16 w110px">Город</span>
+                        <input type="text" id="City" class="f16 col22405a w260px" data-bind="value: ObEmpl().City">
                     </div>
                     <div class="item-fieldset">
-                        <span class="f-left t15 col95acbc f16 w110px" >Адрес</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <span class="f-left t15 col95acbc f16 w110px">Адрес</span>
+                        <input type="text" id="Adress" class="f16 col22405a w260px" data-bind="value: ObEmpl().Adress">
                     </div>
                     <div class="item-fieldset">
-                        <span class="f-left t15 col95acbc f16 w110px" >Телефон</span>
-                        <input type="text" id="Name" class="f16 col22405a w260px" data-bind="value: ''">
+                        <span class="f-left t15 col95acbc f16 w110px">Телефон</span>
+                        <input type="text" id="Phone" class="f16 col22405a w260px" data-bind="value: ObEmpl().Phone">
                     </div>
                 </fieldset>
             </div>
@@ -57,19 +77,14 @@
                                 <th><p>ФИО</p></th>
                                 <th><p>Отдел</p></th>
                                 <th><p>Город</p></th>
-                                @*<td></td>*@
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach (var e in ViewBag.Employes)
-                            {
-                                <tr>
-                                    <td><p>@e.FullName</p></td>
-                                    <td><p>@e.Department</p></td>
-                                    <td><p>@e.City</p></td>
-                                    @*<td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>*@
-                                </tr>
-                            }
+                        <tbody data-bind="foreach: employesList">
+                            <tr data-bind="css: { 'orange': EmployeeId === $root.currentEmplId() }, click: $root.selEmpl.bind($data, EmployeeId), event: { dblclick: $root.readElemEm }">
+                                <td data-bind="text: FullName"></td>
+                                <td data-bind="text: DepartmentName"></td>
+                                <td data-bind="text: City"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

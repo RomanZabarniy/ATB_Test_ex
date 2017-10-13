@@ -92,7 +92,7 @@ p {
 }
 
     .left-sidebar .top {
-        padding: 10px 10px 10px 20px;
+        padding: 0 10px 10px 20px;
         position: relative;
     }
 
@@ -213,4 +213,69 @@ fieldset {
 }
 .m-b10 {
     margin-bottom: 10px;
+}
+
+.orange {
+    background-color: #f15a29 !important
+}
+
+    .orange:hover {
+        background-color: rgba(241, 90, 41, 0.8) !important
+    }
+
+.light-blue {
+    background-color: #9DD4EB !important
+}
+
+.green {
+    background-color: #36b98a
+}
+
+.red {
+    background-color: red
+}
+
+.green:hover {
+    background-color: rgba(54, 185, 138, 0.8)
+}
+
+
+.blue {
+    background-color: #22405a
+}
+
+.blue:hover {
+    background-color: rgba(34, 64, 90, 0.8)
+}
+
+.blue.cb:hover {
+    background-color: rgba(34, 64, 90, 1);
+}
+
+.f-right {
+    float: right;
+}
+.w70px {
+    width: 70px !important;
+}
+.f16 {
+    font-size: 16px;
+}
+.form-select {
+    border: 2px solid #95acbc;
+    overflow: hidden;
+    height: 40px;
+    background-position-y: 0px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.round {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -khtml-border-radius: 4px;
+}
+.m-b5 {
+    margin-bottom: 5px;
 }
