@@ -1,11 +1,13 @@
 ﻿var ISDEBUGMODE = false;
+//var availableTagsCity = '';
+
 
 $(document).ready(function () {
     showIndicator(true);
-    viewModelClients = new EmployesModel();
+    viewModelEmployes = new EmployesModel();
     
-    ko.applyBindings(viewModelClients);
-    viewModelClients.getEmployesList();
+    ko.applyBindings(viewModelEmployes);
+    viewModelEmployes.getEmployesList();
 
 });
 
@@ -24,7 +26,7 @@ function EmployesModel() {
                 self.currentEmplId('');
                 dataEmpl = [];
                 self.employesList([]);
-               
+
                 for (var i in data) {
                     dataEmpl.push(data[i]);
                 }
@@ -40,13 +42,13 @@ function EmployesModel() {
             },
             accept: 'application/json'
         });
-    }
+    };
 
-    self.selEmpl = function (id) { self.currentEmplId(id); }
+    self.selEmpl = function (id) { self.currentEmplId(id); };
 
     self.readElemEm = function () {
         self.editElem();
-    }
+    };
     self.editElem = function () {
         var _ob = '';
         self.checkIsElementSelected(self.currentEmplId());
@@ -57,7 +59,12 @@ function EmployesModel() {
                 break;
             }
         }
-    }
+    };
+
+    self.addEmployee = function () {
+        self.ObEmpl(new EmployeeMod(defEmpl));
+        self.ObEmpl().EmployeeId = 0;
+    };
 
     self.checkIsElementSelected = function (id) {
         if (!id) {
@@ -69,10 +76,10 @@ function EmployesModel() {
             $('#myModal').modal('show');
         }
         return id;
-    }
+    };
     self.sexDrop = ko.observableArray([
         new selectedFilter({ id: 'm', name: "муж" }),
-        new selectedFilter({ id: 'f', name: "жен" }),
+        new selectedFilter({ id: 'f', name: "жен" })
     ]);
     self.depDrop = ko.observableArray();
 
@@ -91,7 +98,7 @@ function EmployesModel() {
             },
             accept: 'application/json'
         });
-    }
+    };
     self.getDDDepartment();
 
     self.saveEmpl = function () {
@@ -114,13 +121,24 @@ function EmployesModel() {
                 self.ErrorMessage('Error read from server ' + info);
             },
             data: data,
-            accept: 'application/json',
+            accept: 'application/json'
         });
-    }
+
+    };
     //TODO Валидация модели
     self.isEmplCorrect = function (data) {
         return true;
-    }
+    };
+
+    $("#City").autocomplete({
+        source: function (request, response) {
+            var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(request.term), "i");
+            response($.grep(availableTagsCity, function (item) {
+                return matcher.test(item);
+            }));
+        }
+    });
+
 }
 
 var defEmpl = {
@@ -132,8 +150,8 @@ var defEmpl = {
     BDate: DC_DateTimeLocalToStringShortDate(new Date(Date.now())),
     City: '',
     Adress: '',
-    Phone: ''   
-}
+    Phone: ''
+};
 
 function EmployeeMod(data) {
     self = this;
@@ -146,8 +164,8 @@ function EmployeeMod(data) {
         self.BDate = ko.observable('');
     }
     else {
-       // self.BDate = ko.observable(DC_DateTimeLocalToStringShortDate(DateTimeToInputDateTime(data.BirsdayDate)));
-        self.BDate = data.BDateString;
+        //self.BDate = ko.observable(DC_DateTimeLocalToStringShortDate(DateTimeToInputDateTime(data.BirsdayDate)));
+        self.BDate = ko.observable(data.BDateString);
     }
     self.Sex = ko.observable(data.Sex);
     self.City = ko.observable(data.City);
@@ -161,4 +179,5 @@ function showIndicator(isShow) {
     else
         $('#loadPict').hide('slow');
 }
+
 

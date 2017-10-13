@@ -7,6 +7,7 @@ using ATB_Test_ex.Models.DB_Context;
 using ATB_Test_ex.Models;
 using ATB_Test_ex.Models.HelperClasses.Enums;
 using ATB_Test_ex.Models.HelperClasses.Shared;
+using System.Threading.Tasks;
 
 namespace ATB_Test_ex.Controllers
 {
@@ -14,7 +15,11 @@ namespace ATB_Test_ex.Controllers
     {
         EmployeeContext db = new EmployeeContext();
 
-        public  ActionResult Index()  { return View(); }
+        public async Task<ActionResult> Index()
+        {
+            ViewBag.CityList = await DropDownContent.GetCityStringAsync();
+            return View();
+        }
 
         public ActionResult About()   { return View(); }
 

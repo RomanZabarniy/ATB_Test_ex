@@ -115,4 +115,6 @@ function DC_DateTimeToShortStringData(date) {
     return dateD;
 }
 
+
+
 //----------------------End-Date converters----------------------------------------------------------------}}}

@@ -1,5 +1,7 @@
 ﻿<script src="~/Scripts/Share.js"></script>
 <script src="~/Scripts/site.js"></script>
+
+
 @{
     ViewData["Title"] = "Сотрудник";
 }
@@ -37,19 +39,19 @@
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">Дата рожд.</span>
-                        <input type="text" id="date-range13-1" class="f16 col22405a w260px" data-bind="value: ObEmpl().BDate">
+                        <input type="text" id="date-range13-1" class="f16 col22405a w260px" data-bind="value: ObEmpl().BDate" placeholder="Нет данных">
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">Город</span>
-                        <input type="text" id="City" class="f16 col22405a w260px" data-bind="value: ObEmpl().City">
+                        <input   type="text" id="City" class="f16 col22405a w260px ui-autocomplete-input" role="textbox" autocomplete="off" placeholder="Нет данных" data-bind="value: ObEmpl().City">
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">Адрес</span>
-                        <input type="text" id="Adress" class="f16 col22405a w260px" data-bind="value: ObEmpl().Adress">
+                        <input type="text" id="Adress" class="f16 col22405a w260px" data-bind="value: ObEmpl().Adress" placeholder="Нет данных">
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">Телефон</span>
-                        <input type="text" id="Phone" class="f16 col22405a w260px" data-bind="value: ObEmpl().Phone">
+                        <input type="text" id="Phone" class="f16 col22405a w260px" data-bind="value: ObEmpl().Phone" placeholder="(___) ___-__-__">
                     </div>
                 </fieldset>
             </div>
@@ -60,7 +62,7 @@
         <div class="container-new properties">
             <main class="content" id="ZoneA">
                 <div class="buttons pr20 pl20 m-b10">
-                    <button type="button" class="btn btn-primary">Добавить</button>
+                    <button type="button" class="btn btn-primary" data-bind="click: addEmployee">Новый</button>
                     <button type="button" class="btn btn-danger">Удалить</button>
                 </div>
                 <div class="table-responsive">
@@ -85,3 +87,35 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#date-range13-1').dateRangePicker(
+            {
+                autoClose: true,
+                singleDate: true,
+                singleMonth: true,
+                showShortcuts: false,
+                format: 'YYYY-MM-DD',
+                autoClose: false,
+                time: {
+                    enabled: false
+                },
+                defaultTime: moment().startOf('day').toDate(),
+            }).bind('datepicker-change', function (event, obj) {
+                /* This event will be triggered when second date is selected */
+                //console.log('change', obj);
+                viewModelEmployes.ObEmpl().BDate(obj.value);
+                // obj will be something like this:
+                // {
+                // 		date1: (Date object of the earlier date),
+                // 		date2: (Date object of the later date),
+                //	 	value: "2013-06-05 to 2013-06-07"
+                // }
+            });
+    })
+
+     var availableTags = '@ViewBag.CityList';
+    availableTagsCity = availableTags.toString().split(",");
+    //$("#City").autocomplete({ source: availableTags });
+</script>
