@@ -35,7 +35,7 @@ p {
     background-color: #ecf1f5;
     -moz-border-radius: 10px 10px 0 0;
     -webkit-border-radius: 10px 10px 0 0;
-    -khtml-border-radius: 10px 10px 0 0;
+    /*-khtml-border-radius: 10px 10px 0 0;*/
     border-radius: 10px 10px 0 0;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -107,7 +107,7 @@ p {
 }
 
 fieldset.employ .item-fieldset {
-    margin: 0px 0px 2px;
+    margin: 0 0 2px;
     width: 100%;
     display: inline-block;
 }
@@ -152,7 +152,7 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
     border: 2px solid #95acbc;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    -khtml-border-radius: 4px;
+    /*-khtml-border-radius: 4px;*/
     border-radius: 4px;
     font-size: 16px;
     line-height: 40px;
@@ -274,7 +274,7 @@ fieldset {
     border-radius: 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
-    -khtml-border-radius: 4px;
+    /*-khtml-border-radius: 4px;*/
 }
 .m-b5 {
     margin-bottom: 5px;

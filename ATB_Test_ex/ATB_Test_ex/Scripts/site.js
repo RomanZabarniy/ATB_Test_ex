@@ -6,7 +6,6 @@ $(document).ready(function () {
     
     ko.applyBindings(viewModelClients);
     viewModelClients.getEmployesList();
-   
 
 });
 
@@ -71,6 +70,57 @@ function EmployesModel() {
         }
         return id;
     }
+    self.sexDrop = ko.observableArray([
+        new selectedFilter({ id: 'm', name: "муж" }),
+        new selectedFilter({ id: 'f', name: "жен" }),
+    ]);
+    self.depDrop = ko.observableArray();
+
+    self.getDDDepartment = function () {
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetDepartmentsWithDef",
+            success: function (data) {
+                self.depDrop(data);
+            },
+            error: function (data) {
+                var info = '';
+                if (ISDEBUGMODE)
+                    info = data.responseText;
+                self.ErrorMessage('Error read from server ' + info);
+            },
+            accept: 'application/json'
+        });
+    }
+    self.getDDDepartment();
+
+    self.saveEmpl = function () {
+        data = ko.toJS(self.ObEmpl());
+        if (!self.isEmplCorrect(data))
+            return;
+        showIndicator(true);
+        $.ajax({
+            type: "POST",
+            url: '/Home/SaveEmployee',
+            success: function (data) {
+                showIndicator(false);
+                self.getEmployesList();
+            },
+            error: function (data) {
+                showIndicator(false);
+                var info = '';
+                if (ISDEBUGMODE)
+                    info = data.responseText;
+                self.ErrorMessage('Error read from server ' + info);
+            },
+            data: data,
+            accept: 'application/json',
+        });
+    }
+    //TODO Валидация модели
+    self.isEmplCorrect = function (data) {
+        return true;
+    }
 }
 
 var defEmpl = {
@@ -103,14 +153,6 @@ function EmployeeMod(data) {
     self.City = ko.observable(data.City);
     self.Adress = ko.observable(data.Adress);
     self.Phone = ko.observable(data.Phone);
-
-    //self.Login = ko.observable(data.Login);
-    //self.Login.extend({
-    //    pattern: {
-    //        message: 'cannot contain spaces',
-    //        params: '[A-Z]'
-    //    }
-    //});
 }
 
 function showIndicator(isShow) {

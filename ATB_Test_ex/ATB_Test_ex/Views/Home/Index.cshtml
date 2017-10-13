@@ -16,7 +16,7 @@
                 <fieldset class="employ">
                     @Html.ValidationSummary()
                     <div class="dib item-w100 m-b10">
-                        <button type="button" class="btn btn-success">Сохранить</button>
+                        <button type="button" class="btn btn-success" data-bind="click: saveEmpl">Сохранить</button>
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">ФИО</span>
@@ -25,20 +25,13 @@
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">Отдел</span>
                         <div>
-                            <select class="w260px round form-select f16 m-b5 " data-bind="value: ObEmpl().DepartmentName">
-                                <option value="1">Не выбран</option>
-                                <option value="2">Администрация</option>
-                                <option value="3">Бухгалтерия</option>
-                                <option value="4">Проектный отдел</option>
-                            </select>
+                            <select class="w260px round form-select f16 m-b5 " data-bind="options: depDrop,  optionsText: 'DepartmentName', optionsValue: 'DepartmentId', value: ObEmpl().DepartmentName"></select>
                         </div>
                     </div>
                     <div class="item-fieldset">
                         <span class="f-left t15 col95acbc f16 w110px">Пол</span>
                         <div>
-                            <select class="w70px round form-select f16 m-b5 " data-bind="value: ObEmpl().Sex">
-                                <option value="m">муж</option>
-                                <option value="f">жен</option>
+                            <select class="w70px round form-select f16 m-b5 " data-bind="options: sexDrop, optionsText: 'name', optionsValue: 'id', value: ObEmpl().Sex">
                             </select>
                         </div>
                     </div>

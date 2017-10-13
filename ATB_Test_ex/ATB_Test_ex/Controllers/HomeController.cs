@@ -41,5 +41,41 @@ namespace ATB_Test_ex.Controllers
                                                  }).ToList();
             return Json(employes);
         }
+
+        [HttpPost]
+        public JsonResult GetDepartmentsWithDef()
+        {
+            return Json(DropDownContent.GetDropDownDepart());
+        }
+
+        [HttpPost]
+        public JsonResult SaveEmployee(EmployeeWrap data)
+        {
+            if (data == null)
+                throw new Exception("Не указан объект сохранения!");
+            Employee model = new Employee();
+            try
+            {
+                 model.FullName = data.FullName;
+                 model.City = data.City;
+                 model.DepartmentId = data.DepartmentId;
+                 model.EmployeeId = data.EmployeeId;
+                 model.Sex = data.Sex ;
+                 model.Adress = data.Adress;
+                 //model.BirsdayDate = data.BirsdayDate;
+
+            if (!ModelState.IsValid)
+            {
+                throw new Exception("Ошибки валидации модели");
+            }
+               
+                 // db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Ошибка сохранения на сервере!");
+            }
+            return Json("Ok");
+        }
     }
 }

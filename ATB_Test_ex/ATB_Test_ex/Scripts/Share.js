@@ -6,6 +6,13 @@ function isStringValueFilled(param) {
         return true;
 }
 
+var selectedFilter = function (data) {
+    var self = this;
+    self.id = ko.observable(data.id);
+    self.name = ko.observable(data.name);
+
+};
+
 //------------------------Date converters----------------------------------------------------------------{{{
 //Date converter: convert DateTime Local to String Local yyyy-mm-dd
 function DC_DateTimeLocalToStringShortDate(data) {

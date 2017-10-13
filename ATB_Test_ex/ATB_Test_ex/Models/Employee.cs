@@ -22,5 +22,10 @@ namespace ATB_Test_ex.Models
         public string City { get; set; }
         public string Adress { get; set; }
         public string Phone { get; set; }
+
+        internal bool Save(object organizationID, object errorList)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
